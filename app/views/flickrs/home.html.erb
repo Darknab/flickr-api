@@ -1,0 +1,18 @@
+<h1>Flickrs search</h1>
+
+
+
+
+<%= form_with url: "/home", method: :get do |form| %>
+    <%= form.label :username, "search user:" %>
+    <%= form.text_field :username %>
+    <%= form.submit "Search" %>
+<% end %>
+
+<% if params[:username] %>
+    <h2> <%= @user.username %> photos: </h2>
+
+    <% @list.each do |photo| %>
+        <img src=" https://live.staticflickr.com/<%=photo.server%>/<%=photo.id%>_<%=photo.secret%>.jpg " >
+    <% end %>
+<% end %>
